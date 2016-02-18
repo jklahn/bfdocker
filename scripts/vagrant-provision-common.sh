@@ -25,7 +25,7 @@ then
   mkdir -p /etc/systemd/system/docker.service.d
   echo '[Service]' > /etc/systemd/system/docker.service.d/docker.conf
   echo 'ExecStart=' >> /etc/systemd/system/docker.service.d/docker.conf
-  echo "ExecStart=/usr/bin/docker -d -s=devicemapper --storage-opt dm.basesize=20G -H fd:// " \
+  echo "ExecStart=/usr/bin/docker daemon -s=devicemapper --storage-opt dm.basesize=20G -H fd:// " \
       >>  /etc/systemd/system/docker.service.d/docker.conf
   systemctl daemon-reload
 fi
