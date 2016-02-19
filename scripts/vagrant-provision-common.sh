@@ -28,6 +28,8 @@ then
   echo "ExecStart=/usr/bin/docker daemon -s=devicemapper --storage-opt dm.basesize=20G -H fd:// " \
       >>  /etc/systemd/system/docker.service.d/docker.conf
   systemctl daemon-reload
+  # add user 'vagrant' to the docker group
+  usermod -aG docker vagrant
 fi
 # Start docker and set to start on boot
 systemctl start docker
